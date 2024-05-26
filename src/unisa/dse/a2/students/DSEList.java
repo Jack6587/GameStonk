@@ -3,7 +3,7 @@ package unisa.dse.a2.students;
 import unisa.dse.a2.interfaces.List;
 
 /**
- * @author simont
+ * @author JackK
  *
  */
 public class DSEList implements List {
@@ -12,7 +12,8 @@ public class DSEList implements List {
 	private Node tail;
 
 	public DSEList() {
-		
+		head = null;
+		tail = null;
 	}
 	public DSEList(Node head_) {
 	}
