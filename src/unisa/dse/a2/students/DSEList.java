@@ -125,6 +125,13 @@ public class DSEList implements List {
 
 	@Override
 	public boolean equals(Object other) {
+		if(this == other) {
+			return true;
+		}
+		
+		if(other == null || getClass() != other.getClass()) {
+			return false;
+		}
 		return true;
 	}
 	
