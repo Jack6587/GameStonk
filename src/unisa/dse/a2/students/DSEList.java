@@ -72,6 +72,14 @@ public class DSEList implements List {
 	//Take each element of the list a writes them to a string 
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		Node current = head;
+		
+		while(current != null) {
+			sb.append(current.getString());
+		
+			current = current.next;
+		}
 	}
 
 	//add the parameter String at of the end of the list
