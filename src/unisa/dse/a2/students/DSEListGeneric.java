@@ -27,7 +27,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 			return;
 		}
 			
-		head = new NodeGeneric<>(null, null, other.head.getString());
+		head = new NodeGeneric<>(null, null, other.head.get());
 		NodeGeneric<E> current = head;
 		NodeGeneric<E> next = other.head.next;
 		
@@ -61,15 +61,47 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 
 	//return the size of the list
 	public int size() {
+		NodeGeneric<E> temp = head;
+		int count = 0;
+		while(temp != null) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
 	}
 	
 	//Take each element of the list a writes them to a string 
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		NodeGeneric<E> current = head;
+		
+		while(current != null) {
+			sb.append(current.get());
+			if(current.next != null) {
+				sb.append(" ");
+			}
+			current = current.next;
+		}
+		return sb.toString();
 	}
 
 	//add the parameter item at of the end of the list
-	public boolean add(Object obj) {
+	public boolean add(E obj) {
+		NodeGeneric<E> n = new NodeGeneric<>(null, tail, obj);
+		n.next = null;
+		
+		if(head == null) {
+			n.prev = null;
+			head = n;
+			tail = n;
+		} else {
+			tail.next = n;
+			n.prev = tail;
+			tail = n;
+		}
+		
+		return true;
 	}
 
 	//add item at parameter's index
@@ -91,6 +123,32 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 
 	@Override
 	public boolean equals(Object other) {
+		if(this == other) {
+			return true;
+		}
+		
+		if(other == null || getClass() != other.getClass()) {
+			return false;
+		}
+		
+		DSEListGeneric<E> otherList = (DSEListGeneric<E>) other;
+		
+		if(this.size() != otherList.size()) {
+			return false;
+		}
+		
+		NodeGeneric<E> current = this.head;
+		NodeGeneric<E> otherCurrent = otherList.head;
+		
+		while(otherCurrent != null) {
+			if(!current.get().equals(otherCurrent.get())) {
+				return false;
+			}
+			
+			current = current.next;
+			otherCurrent = otherCurrent.next;
+		}
+		
 		return true;
 	}
 	
