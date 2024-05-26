@@ -77,9 +77,12 @@ public class DSEList implements List {
 		
 		while(current != null) {
 			sb.append(current.getString());
-		
+			if(current.next != null) {
+				sb.append(" ");
+			}
 			current = current.next;
 		}
+		return sb.toString();
 	}
 
 	//add the parameter String at of the end of the list
