@@ -16,10 +16,27 @@ public class DSEList implements List {
 		tail = null;
 	}
 	public DSEList(Node head_) {
+		head = head_;
 	}
 	
 	//Takes a list then adds each element into a new list
 	public DSEList(DSEList other) { // Copy constructor. 
+		if(other.head == null) {
+			head = null;
+			tail = null;
+			return;
+		}
+			
+		head = new Node(null, null, other.head.getString());
+		Node current = head;
+		Node next = other.head.next;
+		
+		while(next != null) {
+			Node newNode = new Node(null, current, next.getString());
+			current.next = newNode;
+			current = newNode;
+			next = next.next;
+		}
 	}
 
 	//remove the String at the parameter's index
