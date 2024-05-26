@@ -139,6 +139,18 @@ public class DSEList implements List {
 			return false;
 		}
 		
+		Node current = this.head;
+		Node otherCurrent = otherList.head;
+		
+		while(otherCurrent != null) {
+			if(!current.getString().equals(otherCurrent.getString())) {
+				return false;
+			}
+			
+			current = current.next;
+			otherCurrent = otherCurrent.next;
+		}
+		
 		return true;
 	}
 	
