@@ -1,5 +1,7 @@
 package unisa.dse.a2.students;
 
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.processor.core.AbstractMasterDetailListProcessor;
+
 import unisa.dse.a2.interfaces.List;
 
 /**
@@ -88,6 +90,20 @@ public class DSEList implements List {
 
 	//add the parameter String at of the end of the list
 	public boolean add(String obj) {
+		Node n = new Node(null, tail, obj);
+		n.next = null;
+		
+		if(head == null) {
+			n.prev = null;
+			head = n;
+			tail = n;
+		} else {
+			tail.next = n;
+			n.prev = tail;
+			tail = n;
+		}
+		
+		return true;
 	}
 
 	//add String at parameter's index
