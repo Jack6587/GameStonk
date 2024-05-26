@@ -46,8 +46,8 @@ public class ListedCompany {
 	 */
 	public int processTrade(int quantity)
 	{
-		int price = 0;
+		this.currentPrice += quantity / 100;
 		
-		return price;
+		return this.currentPrice;
 	}
 }
