@@ -60,6 +60,13 @@ public class DSEList implements List {
 
 	//return the size of the list
 	public int size() {
+		Node temp = head;
+		int count = 0;
+		while(temp != null) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
 	}
 	
 	//Take each element of the list a writes them to a string 
