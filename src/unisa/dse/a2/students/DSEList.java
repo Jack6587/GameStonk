@@ -132,6 +132,13 @@ public class DSEList implements List {
 		if(other == null || getClass() != other.getClass()) {
 			return false;
 		}
+		
+		DSEList otherList = (DSEList) other;
+		
+		if(this.size() != otherList.size()) {
+			return false;
+		}
+		
 		return true;
 	}
 	
