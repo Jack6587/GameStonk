@@ -37,6 +37,8 @@ public class DSEList implements List {
 			current = newNode;
 			next = next.next;
 		}
+		
+		tail = current;
 	}
 
 	//remove the String at the parameter's index
