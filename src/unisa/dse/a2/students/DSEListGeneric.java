@@ -6,10 +6,10 @@ import unisa.dse.a2.interfaces.ListGeneric;
  * @author simont
  *
  */
-public class DSEListGeneric implements ListGeneric {
+public class DSEListGeneric<E> implements ListGeneric {
 	
-	public NodeGeneric head;
-	private NodeGeneric tail;
+	public NodeGeneric<E> head;
+	private NodeGeneric<E> tail;
 
 	public DSEListGeneric() {
 		
