@@ -3,22 +3,43 @@ package unisa.dse.a2.students;
 import unisa.dse.a2.interfaces.ListGeneric;
 
 /**
- * @author simont
+ * @author JackK
  *
  */
-public class DSEListGeneric<E> implements ListGeneric {
+public class DSEListGeneric<E> implements ListGeneric<E> {
 	
 	public NodeGeneric<E> head;
 	private NodeGeneric<E> tail;
 
 	public DSEListGeneric() {
-		
+		head = null;
+		tail = null;
 	}
-	public DSEListGeneric(NodeGeneric head_) {
+	public DSEListGeneric(NodeGeneric<E> head_) {
+		head = head_;
 	}
 	
 	//Takes a list then adds each element into a new list
-	public DSEListGeneric(DSEList other) { // Copy constructor. 
+	public DSEListGeneric(DSEListGeneric<E> other) { // Copy constructor. 
+		if(other.head == null) {
+			head = null;
+			tail = null;
+			return;
+		}
+			
+		head = new NodeGeneric<>(null, null, other.head.getString());
+		NodeGeneric<E> current = head;
+		NodeGeneric<E> next = other.head.next;
+		
+		while(next != null) {
+			NodeGeneric<E> newNode = new NodeGeneric<>(null, current, next.getString());
+			current.next = newNode;
+			current = newNode;
+			next = next.next;
+		}
+		
+		tail = current;
+	}
 	}
 
 	//remove and return the item at the parameter's index
