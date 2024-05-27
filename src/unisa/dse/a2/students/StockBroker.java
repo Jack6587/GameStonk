@@ -28,8 +28,11 @@ public class StockBroker {
 	 * @param companyCode
 	 * @return true if added
 	 */
-	public boolean addWatchlist(String companyCode)
-	{
+	public boolean addWatchlist(String companyCode) {
+		if(companyCode != null || !watchList.contains(companyCode)) {
+			return watchList.add(companyCode);
+		}
+		return false;
 	}
 	
 	private String name;
