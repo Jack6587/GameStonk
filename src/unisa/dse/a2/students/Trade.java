@@ -94,7 +94,7 @@ public class Trade implements Comparable<Trade> {
 		} else if(otherWatchlist) {
 			return -1;
 		} else {
-			return this.created.compareTo(t.created);
+			return Long.compare(this.created, t.created);
 		}
 	}
 	
