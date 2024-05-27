@@ -69,15 +69,15 @@ public class StockBroker {
 	 * Gets, removes, and returns the next trade to process
 	 * @return Trade to process
 	 */
-	public Trade getNextTrade()
-	{
+	public Trade getNextTrade() {
+		return pendingTrades.poll();
 	}
 	
 	/**
 	 * @return Number of pending trades
 	 */
-	public int getPendingTradeCount()
-	{
+	public int getPendingTradeCount() {
+		return pendingTrades.size();
 	}
 
 	/**
