@@ -64,6 +64,10 @@ public class Trade implements Comparable<Trade> {
 		created = System.nanoTime(); //do not change this
 		tradeId = System.nanoTime(); //do not change this
 		try { Thread.sleep(100); } catch (Exception x) {}
+		
+		this.broker = broker;
+		this.listedCompanyCode = listedCompanyCode;
+		this.shareQuantity = shareQuantity;
 	}
 	
 	/**
@@ -79,8 +83,25 @@ public class Trade implements Comparable<Trade> {
 	 *  
 	 * @return The ordering priority of the trade
 	 */
-	public int compareTo(Trade t)
-	{
+	public int compareTo(Trade t) {
+		boolean thisWatchlist = broker.getWatchlist().contains(this.listedCompanyCode);
+		boolean otherWatchlist = t.broker.getWatchlist().contains(t.listedCompanyCode);
+		
+		if(thisWatchlist && otherWatchlist) {
+			return 0;
+		} else if(thisWatchlist) {
+			return 1;
+		} else if(otherWatchlist) {
+			return -1;
+		} else {
+			if(smaller) {
+				return -1;
+			} else if(equal) {
+				return 0;
+			} else {
+				return 1;
+			}
+		}
 	}
 	
 
