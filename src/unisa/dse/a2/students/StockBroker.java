@@ -49,8 +49,8 @@ public class StockBroker {
 	 * Should store the broker's name and ensure the broker is setup ready to use
 	 * @param name
 	 */
-	public StockBroker(String name)
-	{
+	public StockBroker(String name) {
+		StockBroker stockbroker = new StockBroker(name);
 	}
 	
 	/**
