@@ -50,7 +50,7 @@ public class StockBroker {
 	 * @param name
 	 */
 	public StockBroker(String name) {
-		StockBroker stockbroker = new StockBroker(name);
+		this.name = name;
 	}
 	
 	/**
@@ -58,8 +58,11 @@ public class StockBroker {
 	 * @param companyCode
 	 * @return true if added
 	 */
-	public boolean placeOrder(Trade order)
-	{
+	public boolean placeOrder(Trade order) {
+		if(order != null || !pendingTrades.contains(order)) {
+			return pendingTrades.add(order);
+		}
+		return false;
 	}
 	
 	/**
