@@ -94,13 +94,7 @@ public class Trade implements Comparable<Trade> {
 		} else if(otherWatchlist) {
 			return -1;
 		} else {
-			if(smaller) {
-				return -1;
-			} else if(equal) {
-				return 0;
-			} else {
-				return 1;
-			}
+			return this.created.compareTo(t.created);
 		}
 	}
 	
