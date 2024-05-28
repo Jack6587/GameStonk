@@ -61,8 +61,11 @@ public class SecuritiesExchange {
 	 * Adds the given broke to the list of brokers on the exchange
 	 * @param company
 	 */
-	public boolean addBroker(StockBroker broker)
-	{
+	public boolean addBroker(StockBroker broker) {
+		if(broker != null || !brokers.contains(broker)) {
+			return brokers.add(broker);
+		}
+		return false;
 	}
 	
 	/**
