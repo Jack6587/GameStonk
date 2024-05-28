@@ -39,7 +39,7 @@ public class SecuritiesExchange {
 		this.name = name;
 		this.brokers = new DSEListGeneric<>();
 		this.announcements = new DSEListGeneric<>();
-		this.companies = new Hashmap<>();
+		this.companies = new HashMap<>();
 	}
 	
 	/**
@@ -47,8 +47,14 @@ public class SecuritiesExchange {
 	 * @param company
 	 * @return true if the company was added, false if it was not
 	 */
-	public boolean addCompany(ListedCompany company)
-	{
+	public boolean addCompany(ListedCompany company) {
+		if(company == null || companies.containsKey(company.getCode())) {
+			return false;
+		}
+		companies.put(company.getCode(), company);
+		return true;
+	}
+	
 	}
 
 	/**
