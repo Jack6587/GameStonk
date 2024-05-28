@@ -13,6 +13,7 @@ public class SecuritiesExchange {
 	private String name;
 	
 	public String getName() {
+		return this.name;
 	}
 	
 	/**
@@ -34,8 +35,11 @@ public class SecuritiesExchange {
 	 * Initialises the exchange ready to handle brokers, announcements, and companies
 	 * @param name
 	 */
-	public SecuritiesExchange(String name)
-	{
+	public SecuritiesExchange(String name) {
+		this.name = name;
+		this.brokers = new DSEListGeneric<>();
+		this.announcements = new DSEListGeneric<>();
+		this.companies = new Hashmap<>();
 	}
 	
 	/**
