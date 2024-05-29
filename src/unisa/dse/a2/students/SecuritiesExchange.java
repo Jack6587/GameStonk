@@ -55,7 +55,7 @@ public class SecuritiesExchange {
 		return true;
 	}
 	
-	}
+
 
 	/**
 	 * Adds the given broke to the list of brokers on the exchange
@@ -95,7 +95,12 @@ public class SecuritiesExchange {
 			}
 			
 			int shareQuantity = nextTrade.getShareQuantity();
+			String companyCode = nextTrade.getCompanyCode();
+			String brokerName = broker.getName();
 			
+			if(!companies.containsKey(companyCode)){
+				throw new UntradedCompanyException("Company " + companyCode + " is not listed on the exchange.");
+			}
 		}
 		
 		return successfulTrades;
