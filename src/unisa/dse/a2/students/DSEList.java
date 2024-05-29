@@ -52,6 +52,12 @@ public class DSEList implements List {
 	
 	//returns String at parameter's index
 	public String get(int index) {
+		Node current = head;
+		for(int i = 0; i < index; i++) {
+			current = current.next;
+		}
+		
+		return current.getString();
 	}
 
 	//checks if there is a list
