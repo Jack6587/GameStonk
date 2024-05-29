@@ -85,8 +85,10 @@ public class SecuritiesExchange {
 	 * @throws UntradedCompanyException when traded company is not listed on this exchange
 	 */
 	public int processTradeRound() {
-		for(StockBroker broker : brokers) {
+		for(int i = 0; i < brokers.size(); i++) {
+			StockBroker broker = brokers.get(i);
 			Trade nextTrade = broker.getNextTrade();
+			
 			if(nextTrade == null) {
 				continue;
 			}
