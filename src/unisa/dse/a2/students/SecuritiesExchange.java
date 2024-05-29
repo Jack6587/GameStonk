@@ -84,7 +84,8 @@ public class SecuritiesExchange {
 	 * @return The number of successful trades completed across all brokers
 	 * @throws UntradedCompanyException when traded company is not listed on this exchange
 	 */
-	public int processTradeRound() {
+	public int processTradeRound() throws UntradedCompanyException {
+		int successfulTrades = 0;
 		for(int i = 0; i < brokers.size(); i++) {
 			StockBroker broker = brokers.get(i);
 			Trade nextTrade = broker.getNextTrade();
@@ -92,7 +93,11 @@ public class SecuritiesExchange {
 			if(nextTrade == null) {
 				continue;
 			}
+			
+			
 		}
+		
+		return successfulTrades;
 	}
 	
 	public int runCommandLineExchange(Scanner sc)
