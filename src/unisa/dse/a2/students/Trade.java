@@ -21,7 +21,8 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The company's code
 	 */
-	public void getCompanyCode() {
+	public String getCompanyCode() {
+		return this.listedCompanyCode;
 	}
 	
 	private int shareQuantity;
@@ -29,7 +30,8 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The quantity of shares to trade
 	 */
-	public void getShareQuantity() {
+	public int getShareQuantity() {
+		return this.shareQuantity;
 	}
 
 	private StockBroker broker;
@@ -37,7 +39,8 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return The broker associated with this trade
 	 */
-	public void getStockBroker() {
+	public StockBroker getStockBroker() {
+		return this.broker;
 	}
 
 

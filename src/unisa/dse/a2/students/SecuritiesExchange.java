@@ -94,6 +94,7 @@ public class SecuritiesExchange {
 				continue;
 			}
 			
+			int shareQuantity = nextTrade.getShareQuantity();
 			
 		}
 		
