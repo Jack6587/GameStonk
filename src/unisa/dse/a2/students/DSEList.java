@@ -71,6 +71,17 @@ public class DSEList implements List {
 
 	//returns the index of the String parameter 
 	public int indexOf(String obj) {
+		Node temp = head;
+		int index = 0;
+		while(temp != null) {
+			String string = temp.getString();
+			if(string.equals(obj)) {
+				return index;
+			}
+			temp = temp.next;
+			index++;
+		}
+		return -1;
 	}
 	
 	//returns String at parameter's index
