@@ -48,6 +48,10 @@ public class ListedCompany {
 	{
 		this.currentPrice += quantity / 100;
 		
+		if(this.currentPrice < 1) {
+			this.currentPrice = 1;
+		}
+		
 		return this.currentPrice;
 	}
 }
