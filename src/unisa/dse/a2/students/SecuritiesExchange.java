@@ -89,6 +89,7 @@ public class SecuritiesExchange {
 		for(int i = 0; i < brokers.size(); i++) {
 			StockBroker broker = brokers.get(i);
 			Trade nextTrade = broker.getNextTrade();
+			ListedCompany company = companies.get(i);
 			
 			if(nextTrade == null) {
 				continue;
@@ -96,11 +97,15 @@ public class SecuritiesExchange {
 			
 			int shareQuantity = nextTrade.getShareQuantity();
 			String companyCode = nextTrade.getCompanyCode();
+			int currentPrice = company.getCurrentPrice();
 			String brokerName = broker.getName();
 			
 			if(!companies.containsKey(companyCode)){
 				throw new UntradedCompanyException("Company " + companyCode + " is not listed on the exchange.");
 			}
+			
+			company.processTrade(shareQuantity);
+			successfulTrades++;
 		}
 		
 		return successfulTrades;
