@@ -201,6 +201,28 @@ public class DSEList implements List {
 
 	//removes the parameter's String form the list
 	public boolean remove(String obj) {
+		Node current = head;
+		
+		while(current != null) {
+			if(current.getString().equals(obj)) {				
+				if(current == head) {
+					head = current.next;
+				}
+				if(current == tail) {
+					tail = current.prev;
+				}
+				
+				if(current.prev != null) {
+					current.prev.next = current.next;
+				}
+				if(current.next != null) {
+					current.next.prev = current.prev;
+				}
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
 	}
 	
 	@Override

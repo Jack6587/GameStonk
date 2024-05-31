@@ -44,7 +44,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 
 	//remove and return the item at the parameter's index
 	public void remove(int index) {
-
+		
 	}
 
 	//returns the index of the String parameter 
