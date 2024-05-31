@@ -168,7 +168,20 @@ public class DSEList implements List {
 				head = current;
 			}
 		}
+		else {
+			Node temp = head;
+			for(int i = 0; i < index; i++) {
+				temp = temp.next;
+			}
+			
+			current.next = temp;
+			current.prev = temp.prev;
+			if(temp.prev != null) {
+				temp.prev.next = current;
+			}
+			temp.prev = current;
 		
+		}
 		return true;
 		
 	}
