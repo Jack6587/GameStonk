@@ -66,11 +66,21 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 		}
 		
 		return removeData;
-
 	}
 
 	//returns the index of the String parameter 
 	public int indexOf(String obj) {
+		NodeGeneric<E> temp = head;
+		int index = 0;
+		while(temp != null) {
+			String string = String.valueOf(temp.get());
+			if(string.equals(obj)) {
+				return index;
+			}
+			temp = temp.next;
+			index++;
+		}
+		return -1;
 	}
 	
 	//returns item at parameter's index
@@ -79,6 +89,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 
 	//checks if there is a list
 	public boolean isEmpty() {
+		return head == null;
 	}
 
 	//return the size of the list
@@ -127,7 +138,44 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 	}
 
 	//add item at parameter's index
-	public boolean add(int index, Object obj) {
+	public boolean add(int index, E obj) {
+		NodeGeneric<E> current = new NodeGeneric<E>(null, null, obj);
+		
+		if(index == 0) {
+			current.next = head;
+			if(head != null) {
+				head.prev = current;
+			}
+			head = current;
+		}
+		if(tail == null) {
+			tail = current;
+		}
+		else if(index == size()) {
+			current.prev = tail;
+			if(tail != null) {
+				tail.next = current;
+			}
+			tail = current;
+			if(head == null) {
+				head = current;
+			}
+		}
+		else {
+			NodeGeneric<E> temp = head;
+			for(int i = 0; i < index; i++) {
+				temp = temp.next;
+			}
+			
+			current.next = temp;
+			current.prev = temp.prev;
+			if(temp.prev != null) {
+				temp.prev.next = current;
+			}
+			temp.prev = current;
+		
+		}
+		return true;
 	}
 
 	//searches list for parameter's String return true if found
