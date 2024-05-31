@@ -84,7 +84,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 	}
 	
 	//returns item at parameter's index
-	public T get(int index) {
+	public E get(int index) {
 		NodeGeneric<E> current = head;
 		for(int i = 0; i < index; i++) {
 			current = current.next;
