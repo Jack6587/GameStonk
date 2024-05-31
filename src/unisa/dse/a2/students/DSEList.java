@@ -43,6 +43,20 @@ public class DSEList implements List {
 
 	//remove the String at the parameter's index
 	public String remove(int index) {
+		Node current = head;
+
+		for(int i = 0; i < index; i++) {
+			current = current.next;
+		}
+		
+		String removeData = current.getString();
+		
+		if(current == head) {
+			head = current.next;
+		}
+		if(current == tail) {
+			tail = current.prev;
+		}
 
 	}
 
