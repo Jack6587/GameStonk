@@ -158,7 +158,18 @@ public class DSEList implements List {
 		if(tail == null) {
 			tail = current;
 		}
-
+		else if(index == size()) {
+			current.prev = tail;
+			if(tail != null) {
+				tail.next = current;
+			}
+			tail = current;
+			if(head == null) {
+				head = current;
+			}
+		}
+		
+		return true;
 		
 	}
 
