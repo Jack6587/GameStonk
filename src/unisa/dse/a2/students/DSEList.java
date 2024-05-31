@@ -57,6 +57,15 @@ public class DSEList implements List {
 		if(current == tail) {
 			tail = current.prev;
 		}
+		
+		if(current.prev != null) {
+			current.prev.next = current.next;
+		}
+		if(current.next != null) {
+			current.next.prev = current.prev;
+		}
+		
+		return removeData;
 
 	}
 
