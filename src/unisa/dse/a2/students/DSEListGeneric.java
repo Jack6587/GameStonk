@@ -32,7 +32,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 		NodeGeneric<E> next = other.head.next;
 		
 		while(next != null) {
-			NodeGeneric<E> newNode = new NodeGeneric<>(null, current, next.getString());
+			NodeGeneric<E> newNode = new NodeGeneric<>(null, current, next.get());
 			current.next = newNode;
 			current = newNode;
 			next = next.next;
@@ -40,11 +40,33 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 		
 		tail = current;
 	}
-	}
 
 	//remove and return the item at the parameter's index
-	public void remove(int index) {
+	public E remove(int index) {
+		NodeGeneric<E> current = head;
+
+		for(int i = 0; i < index; i++) {
+			current = current.next;
+		}
 		
+		E removeData = current.get();
+		
+		if(current == head) {
+			head = current.next;
+		}
+		if(current == tail) {
+			tail = current.prev;
+		}
+		
+		if(current.prev != null) {
+			current.prev.next = current.next;
+		}
+		if(current.next != null) {
+			current.next.prev = current.prev;
+		}
+		
+		return removeData;
+
 	}
 
 	//returns the index of the String parameter 
