@@ -69,7 +69,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 	}
 
 	//returns the index of the String parameter 
-	public int indexOf(String obj) {
+	public int indexOf(E obj) {
 		NodeGeneric<E> temp = head;
 		int index = 0;
 		while(temp != null) {
@@ -84,7 +84,13 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 	}
 	
 	//returns item at parameter's index
-	public void get(int index) {
+	public T get(int index) {
+		NodeGeneric<E> current = head;
+		for(int i = 0; i < index; i++) {
+			current = current.next;
+		}
+		
+		return current.get();
 	}
 
 	//checks if there is a list
@@ -193,7 +199,30 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 	}
 
 	//removes the parameter's item form the list
-	public boolean remove(Object obj) {
+	public boolean remove(E obj) {
+		NodeGeneric<E> current = head;
+		
+		while(current != null) {
+			String string = String.valueOf(current.get());
+			if(string.equals(obj)) {				
+				if(current == head) {
+					head = current.next;
+				}
+				if(current == tail) {
+					tail = current.prev;
+				}
+				
+				if(current.prev != null) {
+					current.prev.next = current.next;
+				}
+				if(current.next != null) {
+					current.next.prev = current.prev;
+				}
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
 	}
 	
 	@Override
