@@ -146,6 +146,20 @@ public class DSEList implements List {
 
 	//add String at parameter's index
 	public boolean add(int index, String obj) {
+		Node current = new Node(null, null, obj);
+		
+		if(index == 0) {
+			current.next = head;
+			if(head != null) {
+				head.prev = current;
+			}
+			head = current;
+		}
+		if(tail == null) {
+			tail = current;
+		}
+
+		
 	}
 
 	//searches list for parameter's String return true if found
