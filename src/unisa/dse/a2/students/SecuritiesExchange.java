@@ -89,14 +89,16 @@ public class SecuritiesExchange {
 		for(int i = 0; i < brokers.size(); i++) {
 			StockBroker broker = brokers.get(i);
 			Trade nextTrade = broker.getNextTrade();
-			ListedCompany company = companies.get(i);
+			
 			
 			if(nextTrade == null) {
 				continue;
 			}
 			
-			int shareQuantity = nextTrade.getShareQuantity();
 			String companyCode = nextTrade.getCompanyCode();
+			
+			ListedCompany company = companies.get(companyCode);
+			int shareQuantity = nextTrade.getShareQuantity();
 			int currentPrice = company.getCurrentPrice();
 			String brokerName = broker.getName();
 			
@@ -105,14 +107,15 @@ public class SecuritiesExchange {
 			}
 			
 			company.processTrade(shareQuantity);
+			String announcementString = "Trade: " + shareQuantity + companyCode + " @ " + currentPrice + " via " + brokerName;
+			announcements.add(announcementString);
 			successfulTrades++;
 		}
 		
 		return successfulTrades;
 	}
 	
-	public int runCommandLineExchange(Scanner sc)
-	{
-		
+	public int runCommandLineExchange(Scanner sc) {
+		return 0;
 	}
 }
