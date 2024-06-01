@@ -86,8 +86,16 @@ public class DSEList implements List {
 	
 	//returns String at parameter's index
 	public String get(int index) {
+		if(index < 0) {
+			return null;
+		}
+		
 		Node current = head;
 		for(int i = 0; i < index; i++) {
+			if(current == null) {
+				return null;
+			}
+			
 			current = current.next;
 		}
 		
