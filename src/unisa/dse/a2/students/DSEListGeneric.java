@@ -85,13 +85,21 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 	
 	//returns item at parameter's index
 	public E get(int index) {
+		if(index < 0) {
+			return null;
+		}
 		NodeGeneric<E> current = head;
 		for(int i = 0; i < index; i++) {
+			if(current == null) {
+				return null;
+			}
+			
 			current = current.next;
 		}
 		
 		return current.get();
 	}
+	
 
 	//checks if there is a list
 	public boolean isEmpty() {
@@ -203,8 +211,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 		NodeGeneric<E> current = head;
 		
 		while(current != null) {
-			String string = String.valueOf(current.get());
-			if(string.equals(obj)) {				
+			if(current.get().equals(obj)) {				
 				if(current == head) {
 					head = current.next;
 				}
