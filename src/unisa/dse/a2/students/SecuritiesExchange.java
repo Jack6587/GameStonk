@@ -62,7 +62,7 @@ public class SecuritiesExchange {
 	 * @param company
 	 */
 	public boolean addBroker(StockBroker broker) {
-		if(broker != null || !brokers.contains(broker)) {
+		if(broker != null && !brokers.contains(broker)) {
 			return brokers.add(broker);
 		}
 		return false;
