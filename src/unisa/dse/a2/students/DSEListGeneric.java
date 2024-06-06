@@ -73,8 +73,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 		NodeGeneric<E> temp = head;
 		int index = 0;
 		while(temp != null) {
-			String string = String.valueOf(temp.get());
-			if(string.equals(obj)) {
+			if(temp.get().equals(obj)) {
 				return index;
 			}
 			temp = temp.next;
@@ -197,8 +196,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 		NodeGeneric<E> current = head;
 		
 		while(current != null) {
-			String string = String.valueOf(current.get());
-			if(string.equals(obj)) {
+			if(current.get().equals(obj)) {
 				return true;
 			}
 			current = current.next;

@@ -103,15 +103,15 @@ public class SecuritiesExchange {
 			}
 			
 			String companyCode = nextTrade.getCompanyCode();
-			
 			ListedCompany company = companies.get(companyCode);
-			int shareQuantity = nextTrade.getShareQuantity();
-			int currentPrice = company.getCurrentPrice();
-			String brokerName = broker.getName();
 			
 			if(!companies.containsKey(companyCode)){
 				throw new UntradedCompanyException("Company " + companyCode + " is not listed on the exchange.");
 			}
+			
+			int shareQuantity = nextTrade.getShareQuantity();
+			int currentPrice = company.getCurrentPrice();
+			String brokerName = broker.getName();
 			
 			company.processTrade(shareQuantity);
 			String announcementString = "Trade: " + shareQuantity + companyCode + " @ " + currentPrice + " via " + brokerName;
