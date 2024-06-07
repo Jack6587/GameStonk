@@ -21,24 +21,24 @@ public class DSEList implements List {
 	
 	//Takes a list then adds each element into a new list
 	public DSEList(DSEList other) { // Copy constructor. 
-		if(other.head == null) {
+		if(other.head == null) { // in the case the original list is empty
 			head = null;
-			tail = null;
+			tail = null; // head and tail set to null
 			return;
 		}
 			
-		head = new Node(null, null, other.head.getString());
-		Node current = head;
-		Node next = other.head.next;
+		head = new Node(null, null, other.head.getString()); // creates a new head node with parameter's string value/data
+		Node current = head; // current points to head (previously created)
+		Node next = other.head.next; // next points to the next node of the head or the original list
 		
-		while(next != null) {
-			Node newNode = new Node(null, current, next.getString());
-			current.next = newNode;
-			current = newNode;
-			next = next.next;
+		while(next != null) { // iterates over list
+			Node newNode = new Node(null, current, next.getString()); // creates a new node each iteration with same data as original list
+			current.next = newNode; // next pointer is set to newly created node
+			current = newNode; // current now set to newNode
+			next = next.next; // set next to point to the next node in the list
 		}
 		
-		tail = current;
+		tail = current; // when iteration is complete, the last node (current) is set to tail
 	}
 
 	//remove the String at the parameter's index
