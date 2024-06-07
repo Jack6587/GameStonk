@@ -136,9 +136,7 @@ public class DSEList implements List {
 
 	//add the parameter String at of the end of the list
 	public boolean add(String obj) {
-		Node n = new Node(null, tail, obj);
-		n.next = null;
-		
+		Node n = new Node(null, tail, obj);		
 		if(head == null) {
 			n.prev = null;
 			head = n;
@@ -148,12 +146,15 @@ public class DSEList implements List {
 			n.prev = tail;
 			tail = n;
 		}
-		
 		return true;
 	}
 
 	//add String at parameter's index
 	public boolean add(int index, String obj) {
+		if(index < 0 || index > size()) {
+			throw new IndexOutOfBoundsException();
+		}
+		
 		Node current = new Node(null, null, obj);
 		
 		if(index == 0) {
@@ -162,32 +163,25 @@ public class DSEList implements List {
 				head.prev = current;
 			}
 			head = current;
-		}
-		if(tail == null) {
-			tail = current;
+			if(tail == null) {
+				tail = current;
+			}
 		}
 		else if(index == size()) {
-			current.prev = tail;
-			if(tail != null) {
-				tail.next = current;
-			}
-			tail = current;
-			if(head == null) {
-				head = current;
-			}
+			return add(obj);
 		}
 		else {
 			Node temp = head;
-			for(int i = 0; i < index; i++) {
+			for(int i = 0; i < index - 1; i++) {
 				temp = temp.next;
 			}
 			
-			current.next = temp;
-			current.prev = temp.prev;
-			if(temp.prev != null) {
-				temp.prev.next = current;
+			current.next = temp.next;
+			current.prev = temp;
+			if(temp.next != null) {
+				temp.next.prev = current;
 			}
-			temp.prev = current;
+			temp.next = current;
 		
 		}
 		return true;
