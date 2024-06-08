@@ -121,17 +121,17 @@ public class DSEList implements List {
 	//Take each element of the list a writes them to a string 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		Node current = head;
+		StringBuilder sb = new StringBuilder(); // initialise a new StringBuilder
+		Node current = head; // node created to traverse the list, starts at head
 		
-		while(current != null) {
-			sb.append(current.getString());
+		while(current != null) { // loop that traverses the list
+			sb.append(current.getString()); // appends string representation to the StringBuilder
 			if(current.next != null) {
-				sb.append(" ");
+				sb.append(" "); // adds a space in the string as long as there is an item present in next, so each value is spaced out but no trailing white space remains at end of string
 			}
-			current = current.next;
+			current = current.next; // points to next node and repeats
 		}
-		return sb.toString();
+		return sb.toString(); // returns string representation
 	}
 
 	//add the parameter String at of the end of the list
