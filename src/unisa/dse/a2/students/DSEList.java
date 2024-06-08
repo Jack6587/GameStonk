@@ -20,7 +20,7 @@ public class DSEList implements List {
 	}
 	
 	//Takes a list then adds each element into a new list
-	public DSEList(DSEList other) { // Copy constructor. 
+	public DSEList(DSEList other) { // Copy constructor 
 		if(other.head == null) { // in the case the original list is empty
 			head = null;
 			tail = null; // head and tail set to null
@@ -136,15 +136,15 @@ public class DSEList implements List {
 
 	//add the parameter String at of the end of the list
 	public boolean add(String obj) {
-		Node n = new Node(null, tail, obj);		
-		if(head == null) {
-			n.prev = null;
+		Node n = new Node(null, tail, obj);	// create new node. Next is null and previous is tail as this node is the new tail
+		if(head == null) { // if list is empty
+			n.prev = null; // set previous to null
 			head = n;
-			tail = n;
-		} else {
-			tail.next = n;
-			n.prev = tail;
-			tail = n;
+			tail = n; // this makes the node the first in the list as it becomes both head and tail
+		} else { // if list is not empty
+			tail.next = n; // sets the end of the list's next to be the new node
+			n.prev = tail; // new node's previous pointer now points to the list's tail
+			tail = n; // new node becomes the tail
 		}
 		return true;
 	}
