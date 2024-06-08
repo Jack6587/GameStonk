@@ -104,18 +104,18 @@ public class DSEList implements List {
 
 	//checks if there is a list
 	public boolean isEmpty() {
-		return head == null;
+		return head == null; // returns true if the list's head is null, demonstrating that the list is empty
 	}
 
 	//return the size of the list
 	public int size() {
-		Node temp = head;
-		int count = 0;
-		while(temp != null) {
-			count++;
-			temp = temp.next;
+		Node temp = head; // temp node created to traverse the list, starts with head
+		int count = 0; // counter that counts number of nodes
+		while(temp != null) { // loop that traverses the list
+			count++; // increments count
+			temp = temp.next; // goes to next node
 		}
-		return count;
+		return count; // return total count
 	}
 	
 	//Take each element of the list a writes them to a string 
