@@ -45,23 +45,23 @@ public class DSEList implements List {
 	public String remove(int index) {
 		Node current = head;
 
-		for(int i = 0; i < index; i++) {
+		for(int i = 0; i < index; i++) { // iterates to the point of the index
 			current = current.next;
 		}
 		
 		String removeData = current.getString();
 		
-		if(current == head) {
+		if(current == head) { // updates head to point to the next node if the head is to be deleted
 			head = current.next;
 		}
-		if(current == tail) {
+		if(current == tail) { // updates tail to point to the previous node if the tail is to be deleted
 			tail = current.prev;
 		}
 		
-		if(current.prev != null) {
+		if(current.prev != null) { // updates the previous node to point to current's next (e.g. A->B->C->D, current = C, after this, B.next = D)
 			current.prev.next = current.next;
 		}
-		if(current.next != null) {
+		if(current.next != null) { // updates the next node to point to current's previous (e.g. A->B->C->D, current = C, after this, D.prev would now equal B)
 			current.next.prev = current.prev;
 		}
 		
@@ -73,15 +73,15 @@ public class DSEList implements List {
 	public int indexOf(String obj) {
 		Node temp = head;
 		int index = 0;
-		while(temp != null) {
+		while(temp != null) { // traverse the list to find the position of the string
 			String string = temp.getString();
-			if(string.equals(obj)) {
+			if(string.equals(obj)) { // if the strings are equal 
 				return index;
 			}
-			temp = temp.next;
-			index++;
+			temp = temp.next; // move to next node
+			index++; // increment index counter
 		}
-		return -1;
+		return -1; // if string not found, -1 is returned
 	}
 	
 	//returns String at parameter's index
