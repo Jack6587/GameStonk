@@ -93,30 +93,30 @@ public class SecuritiesExchange {
 	 */
 	public int processTradeRound() throws UntradedCompanyException {
 		int successfulTrades = 0; // create a counter for all successful trades (must be returned)
-		for(int i = 0; i < brokers.size(); i++) {
-			StockBroker broker = brokers.get(i);
-			Trade nextTrade = broker.getNextTrade();
+		for(int i = 0; i < brokers.size(); i++) { // iterate over all brokers
+			StockBroker broker = brokers.get(i); // get broker at index i
+			Trade nextTrade = broker.getNextTrade(); // variable to represent the next trade from queue
 			
 			
-			if(nextTrade == null) {
+			if(nextTrade == null) { // if no pending trades are in the queue, go to the next broker
 				continue;
 			}
 			
-			String companyCode = nextTrade.getCompanyCode();
-			ListedCompany company = companies.get(companyCode);
+			String companyCode = nextTrade.getCompanyCode(); // get company code from trade
+			ListedCompany company = companies.get(companyCode); // get the company from the map of companies
 			
-			if(!companies.containsKey(companyCode)){
+			if(!companies.containsKey(companyCode)){ // exception is thrown if company is not in the exchange
 				throw new UntradedCompanyException("Company " + companyCode + " is not listed on the exchange.");
 			}
 			
-			int shareQuantity = nextTrade.getShareQuantity();
-			int currentPrice = company.getCurrentPrice();
-			String brokerName = broker.getName();
+			int shareQuantity = nextTrade.getShareQuantity(); // share quantity of the trade
+			int currentPrice = company.getCurrentPrice(); // current price of the company before the trade
+			String brokerName = broker.getName(); // broker name
 			
-			company.processTrade(shareQuantity);
-			String announcementString = "Trade: " + shareQuantity + companyCode + " @ " + currentPrice + " via " + brokerName;
-			announcements.add(announcementString);
-			successfulTrades++;
+			company.processTrade(shareQuantity); // calls the processTrade method
+			String announcementString = "Trade: " + shareQuantity + companyCode + " @ " + currentPrice + " via " + brokerName; // string representation of details of the trade
+			announcements.add(announcementString); // adds the announcement to the list of announcements
+			successfulTrades++; // increment the trade counter
 		}
 		
 		return successfulTrades;
