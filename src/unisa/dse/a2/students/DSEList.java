@@ -86,12 +86,12 @@ public class DSEList implements List {
 	
 	//returns String at parameter's index
 	public String get(int index) {
-		if(index < 0) {
+		if(index < 0) { // if index is negative
 			return null;
 		}
 		
 		Node current = head;
-		for(int i = 0; i < index; i++) {
+		for(int i = 0; i < index; i++) { // traverses the list from the head node
 			if(current == null) {
 				return null;
 			}
@@ -152,36 +152,36 @@ public class DSEList implements List {
 	//add String at parameter's index
 	public boolean add(int index, String obj) {
 		if(index < 0 || index > size()) {
-			throw new IndexOutOfBoundsException();
+			throw new IndexOutOfBoundsException(); // throws exception for invalid index
 		}
 		
-		Node current = new Node(null, null, obj);
+		Node current = new Node(null, null, obj); // creates a new node with obj data
 		
-		if(index == 0) {
+		if(index == 0) { // if index is at the beginning of the list
 			current.next = head;
 			if(head != null) {
 				head.prev = current;
 			}
-			head = current;
+			head = current; // head now points to the new node
 			if(tail == null) {
-				tail = current;
+				tail = current; // if the list is empty, the new node also becomes the tail
 			}
 		}
-		else if(index == size()) {
-			return add(obj);
+		else if(index == size()) { // if inserting at end of list
+			return add(obj); // just calls the existing add method as that is designed to add to the end of the list
 		}
-		else {
+		else { // if inserting somewhere within the middle of the list
 			Node temp = head;
 			for(int i = 0; i < index - 1; i++) {
-				temp = temp.next;
+				temp = temp.next; // iterate over the list to one before index, so we can correctly add to the list
 			}
 			
-			current.next = temp.next;
-			current.prev = temp;
+			current.next = temp.next; // sets the next pointer to where temp was pointing
+			current.prev = temp; // sets the previous pointer to temp
 			if(temp.next != null) {
-				temp.next.prev = current;
+				temp.next.prev = current; // update the prev pointer of temp's next to point to current
 			}
-			temp.next = current;
+			temp.next = current; // set temp's next to point to current
 		
 		}
 		return true;
