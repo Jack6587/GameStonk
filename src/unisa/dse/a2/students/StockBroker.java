@@ -29,7 +29,7 @@ public class StockBroker {
 	 * @return true if added
 	 */
 	public boolean addWatchlist(String companyCode) {
-		if(companyCode != null || !watchList.contains(companyCode)) { // if company code exists and does not already belong to the watchlist
+		if(companyCode != null && !watchList.contains(companyCode)) { // if company code exists and does not already belong to the watchlist
 			return watchList.add(companyCode); // adds company code to the watchlist
 		}
 		return false; // return false otherwise

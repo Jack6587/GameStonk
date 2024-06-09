@@ -35,7 +35,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 			NodeGeneric<E> newNode = new NodeGeneric<>(null, current, next.get()); // generic implementation of node
 			current.next = newNode;
 			current = newNode;
-			next = next.next;
+			next = next.next; // please note that the DSEList and generic class are almost identical, so detailed comments for each method can be found in DSEList class
 		}
 		
 		tail = current;
