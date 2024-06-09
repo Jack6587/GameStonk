@@ -192,39 +192,39 @@ public class DSEList implements List {
 	public boolean contains(String obj) {
 		Node current = head;
 		
-		while(current != null) {
-			if(current.getString().equals(obj)) {
+		while(current != null) { // traverse the list until the end
+			if(current.getString().equals(obj)) { // checks if obj matches the current's string
 				return true;
 			}
 			current = current.next;
 		}
-		return false;
+		return false; // returns false if obj not found
 	}
 
 	//removes the parameter's String form the list
 	public boolean remove(String obj) {
 		Node current = head;
 		
-		while(current != null) {
-			if(current.getString().equals(obj)) {				
+		while(current != null) { // traverse the list until end
+			if(current.getString().equals(obj)) { // if current and obj are equal
 				if(current == head) {
-					head = current.next;
+					head = current.next; // head now points to current's next, effectively removing it from the list
 				}
 				if(current == tail) {
-					tail = current.prev;
+					tail = current.prev; // similarly, tail is now set to current's previous, detaching the current node from the list
 				}
 				
-				if(current.prev != null) {
-					current.prev.next = current.next;
+				if(current.prev != null) { // if current has a previous node
+					current.prev.next = current.next; // links the current's previous node to the current's next node, removing it from the list
 				}
-				if(current.next != null) {
-					current.next.prev = current.prev;
+				if(current.next != null) { // if current has a next node
+					current.next.prev = current.prev; // links the current's next node to current's previous node, removing it from the list
 				}
-				return true;
+				return true; // indicates successful removal
 			}
-			current = current.next;
+			current = current.next; // move to next node
 		}
-		return false;
+		return false; // indicates unsuccessful removal
 	}
 	
 	@Override
