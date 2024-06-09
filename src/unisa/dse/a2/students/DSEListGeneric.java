@@ -29,10 +29,10 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 			
 		head = new NodeGeneric<>(null, null, other.head.get());
 		NodeGeneric<E> current = head;
-		NodeGeneric<E> next = other.head.next;
+		NodeGeneric<E> next = other.head.next; // at every point where the Node class was in DSEList, NodeGeneric is there instead
 		
 		while(next != null) {
-			NodeGeneric<E> newNode = new NodeGeneric<>(null, current, next.get());
+			NodeGeneric<E> newNode = new NodeGeneric<>(null, current, next.get()); // generic implementation of node
 			current.next = newNode;
 			current = newNode;
 			next = next.next;
@@ -43,7 +43,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 
 	//remove and return the item at the parameter's index
 	public E remove(int index) {
-		NodeGeneric<E> current = head;
+		NodeGeneric<E> current = head; // note that E is the placeholder for element type
 
 		for(int i = 0; i < index; i++) {
 			current = current.next;
@@ -187,7 +187,7 @@ public class DSEListGeneric<E> implements ListGeneric<E> {
 		NodeGeneric<E> current = head;
 		
 		while(current != null) {
-			if(current.get().equals(obj)) {
+			if(current.get().equals(obj)) { // in DSEList, I used .getString. Here, that doesn't make sense as this is a generic class, so just .get() is used
 				return true;
 			}
 			current = current.next;
