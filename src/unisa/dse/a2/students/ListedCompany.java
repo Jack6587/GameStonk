@@ -7,7 +7,7 @@ public class ListedCompany {
 	 */
 	private String name;
 	
-	public String getName() {
+	public String getName() { // getter method for company name
 		return this.name;
 	}
 
@@ -16,7 +16,7 @@ public class ListedCompany {
 	 */
 	private String code;
 	
-	public String getCode() {
+	public String getCode() { // getter method for company's listing code
 		return this.code;
 	}
 
@@ -25,12 +25,11 @@ public class ListedCompany {
 	 */
 	private int currentPrice;
 	
-	public int getCurrentPrice() {
+	public int getCurrentPrice() { // getter method for company's current price
 		return this.currentPrice;
 	}
 	
-	public ListedCompany(String code, String name, int currentPrice)
-	{
+	public ListedCompany(String code, String name, int currentPrice) { // constructor to initialise ListedCompany object with code, name and current price
 		this.code = code;
 		this.name = name;
 		this.currentPrice = currentPrice;
@@ -48,7 +47,7 @@ public class ListedCompany {
 	{
 		this.currentPrice += quantity / 100;
 		
-		if(this.currentPrice < 1) {
+		if(this.currentPrice < 1) { // ensures company price does not go below 1
 			this.currentPrice = 1;
 		}
 		
