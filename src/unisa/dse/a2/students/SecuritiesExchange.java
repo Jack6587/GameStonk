@@ -48,10 +48,10 @@ public class SecuritiesExchange {
 	 * @return true if the company was added, false if it was not
 	 */
 	public boolean addCompany(ListedCompany company) {
-		if(company == null || companies.containsKey(company.getCode())) {
+		if(company == null || companies.containsKey(company.getCode())) { // if company is null or already belongs to the map
 			return false;
 		}
-		companies.put(company.getCode(), company);
+		companies.put(company.getCode(), company); // adds company to map using the code as the key
 		return true;
 	}
 	
@@ -62,17 +62,17 @@ public class SecuritiesExchange {
 	 * @param company
 	 */
 	public boolean addBroker(StockBroker broker) {
-		if(broker != null) {
-			for(int i = 0; i < brokers.size(); i++) {
-				StockBroker stockbrokers = brokers.get(i);
-				if(stockbrokers.equals(broker)) {
+		if(broker != null) { // if broker is not null
+			for(int i = 0; i < brokers.size(); i++) { // iterate over all brokers
+				StockBroker stockbrokers = brokers.get(i); // obtain the broker at index i
+				if(stockbrokers.equals(broker)) { // if current broker is the same as the broker to be added
 					return false;
 				}
 			}
 			
-			return brokers.add(broker);
+			return brokers.add(broker); // otherwise, add the broker and return true
 		}
-		return false;
+		return false; // returns false if broker is null
 	}
 	
 	/**
@@ -92,7 +92,7 @@ public class SecuritiesExchange {
 	 * @throws UntradedCompanyException when traded company is not listed on this exchange
 	 */
 	public int processTradeRound() throws UntradedCompanyException {
-		int successfulTrades = 0;
+		int successfulTrades = 0; // create a counter for all successful trades (must be returned)
 		for(int i = 0; i < brokers.size(); i++) {
 			StockBroker broker = brokers.get(i);
 			Trade nextTrade = broker.getNextTrade();
