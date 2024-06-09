@@ -20,7 +20,7 @@ public class StockBroker {
 	 * @return
 	 */
 	public DSEListGeneric<String> getWatchlist() {
-		return new DSEListGeneric<String>(watchList);
+		return new DSEListGeneric<String>(watchList); // returns a new list as a copy of the current list
 	}
 	
 	/**
@@ -29,10 +29,10 @@ public class StockBroker {
 	 * @return true if added
 	 */
 	public boolean addWatchlist(String companyCode) {
-		if(companyCode != null || !watchList.contains(companyCode)) {
-			return watchList.add(companyCode);
+		if(companyCode != null || !watchList.contains(companyCode)) { // if company code exists and does not already belong to the watchlist
+			return watchList.add(companyCode); // adds company code to the watchlist
 		}
-		return false;
+		return false; // return false otherwise
 	}
 	
 	private String name;
@@ -50,7 +50,7 @@ public class StockBroker {
 	 * @param name
 	 */
 	public StockBroker(String name) {
-		this.name = name;
+		this.name = name; // initialise name of broker
 	}
 	
 	/**
@@ -59,10 +59,10 @@ public class StockBroker {
 	 * @return true if added
 	 */
 	public boolean placeOrder(Trade order) {
-		if(order != null && !pendingTrades.contains(order)) {
-			return pendingTrades.add(order);
+		if(order != null && !pendingTrades.contains(order)) { // if order is not null and does not belong to the list of pending trades
+			return pendingTrades.add(order); // adds order to pending trades
 		}
-		return false;
+		return false; // returns false otherwise
 	}
 	
 	/**
@@ -70,14 +70,14 @@ public class StockBroker {
 	 * @return Trade to process
 	 */
 	public Trade getNextTrade() {
-		return pendingTrades.poll();
+		return pendingTrades.poll(); // remove and return the head of the queue
 	}
 	
 	/**
 	 * @return Number of pending trades
 	 */
 	public int getPendingTradeCount() {
-		return pendingTrades.size();
+		return pendingTrades.size(); // return the size of the pending trades queue
 	}
 
 	/**
