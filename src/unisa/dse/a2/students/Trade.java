@@ -12,8 +12,8 @@ public class Trade implements Comparable<Trade> {
 	/**
 	 * @return Track the moment in time this Trade was created
 	 */
-	public void getCreated()
-	{
+	public long getCreated() {
+		return this.created;
 	}
 	
 	public String listedCompanyCode;

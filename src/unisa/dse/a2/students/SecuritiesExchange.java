@@ -37,9 +37,9 @@ public class SecuritiesExchange {
 	 */
 	public SecuritiesExchange(String name) {
 		this.name = name;
-		this.brokers = new DSEListGeneric<>();
-		this.announcements = new DSEListGeneric<>();
-		this.companies = new HashMap<>();
+		this.brokers = new DSEListGeneric<>(); // list of brokers initialised
+		this.announcements = new DSEListGeneric<>(); // list of announcements initialised
+		this.companies = new HashMap<>(); // map of companies initialised
 	}
 	
 	/**
