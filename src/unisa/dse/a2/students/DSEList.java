@@ -234,33 +234,35 @@ public class DSEList implements List {
 
 	@Override
 	public boolean equals(Object other) {
-		if(this == other) {
+		if(this == other) { // if object is being compared to itself
 			return true;
 		}
 		
-		if(other == null || getClass() != other.getClass()) {
+		if(other == null || getClass() != other.getClass()) { // if object is null or belongs to another class
 			return false;
 		}
 		
-		DSEList otherList = (DSEList) other;
+		DSEList otherList = (DSEList) other; // cast the "other" object to DSEList
 		
-		if(this.size() != otherList.size()) {
+		if(this.size() != otherList.size()) { // if the sizes of the lists are different
 			return false;
 		}
 		
-		Node current = this.head;
-		Node otherCurrent = otherList.head;
+		Node current = this.head; // pointer to traverse the current list
+		Node otherCurrent = otherList.head; // pointer to traverse the other list
 		
-		while(otherCurrent != null) {
-			if(!current.getString().equals(otherCurrent.getString())) {
+		while(otherCurrent != null) { // loop that iterates over both lists
+			if(!current.getString().equals(otherCurrent.getString())) { // if the string values are different
 				return false;
 			}
 			
+			// move to next node
 			current = current.next;
 			otherCurrent = otherCurrent.next;
 		}
 		
-		return true;
+		
+		return true; // if all elements are equal
 	}
 	
 }
